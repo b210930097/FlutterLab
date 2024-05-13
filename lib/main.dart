@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:lab/profile.dart';
-import 'package:lab/weather.dart';
+import 'package:lab/Lab3/weather.dart';
+import 'package:lab/Lab4/profile.dart';
+import 'package:lab/Lab5/Calculator.dart';
+import 'package:lab/Lab6/plan_creator_screen.dart';
+import 'package:lab/Lab6/plan_provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(PlanProvider(child: const MyApp()));
 }
 
 class MyApp extends StatefulWidget {
@@ -22,6 +25,7 @@ class _MyAppState extends State<MyApp> {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
+      // theme: ThemeData(primarySwatch: Colors.purple),
       home: Navigator(
         onGenerateRoute: (settings) {
           return MaterialPageRoute(
@@ -55,12 +59,22 @@ class _MyAppState extends State<MyApp> {
                     onPressed: () async {
                       await Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (context) => Profile(),
+                          builder: (context) => Calculator(),
                         ),
                       );
                       setState(() {});
                     },
                     child: const Text('Lab5'),
+                  ),
+                  ElevatedButton(
+                    onPressed: () async {
+                      await Navigator.of(context).push(
+                        MaterialPageRoute(
+                            builder: (context) => PlanCreatorScreen()),
+                      );
+                      setState(() {});
+                    },
+                    child: const Text('Lab6'),
                   ),
                 ],
               ),
